@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <!-- <style>
+      .container {
+        max-width: 200px;
+        padding-top: 30px;
+      }
+      input {
+        max-width: 200px;
+      }
+    </style> -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Adder</h1>
+      <br>
+      <form role="form" method="post" onsubmit="return false">
+          <div class="form-group">
+              <input type="text" class="form-control" name="n1" placeholder="Enter a number" required>
+              <br>
+              <input type="text" class="form-control" name="n2" placeholder="Enter a number" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+      <br>
+      The calculated value is: <span id="results"></span>!
+    </div>
+      <form class="form-inline">
+      <label class="sr-only" for="inlineFormInputName2">Name</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
+      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+      </div>
+
+      <div class="form-check mb-2 mr-sm-2">
+        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+        <label class="form-check-label" for="inlineFormCheck">
+          Remember me
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+
+    <div class=\"aDoc\">  <a href=\"http://analyses.chbrp.com/document/view.php?id=1334\">Legislation Text:</a> 02/22/18  <div class=\"share\">   <a href=\"mailto:?Subject=Cancer Treatment - Legislation Text&amp;body=View the document here: http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1334. More at http%3A%2F%2Fchbrp.com%2Fcompleted_analyses%2Findex.php?house=AB%26billno=1860\" class=\"share-link\" onclick=\"genEmail();\"><i class=\"fa fa-envelope\"></i></a>   <div class=\"socialmedia\">    <a href=\"#share\" class=\"share-link stoggle\" onclick=\"return false;\"><i class=\"fa fa-share-alt\"></i></a>    <div class=\"s-links\">     <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1334&amp;title=amp;summary=\" onclick=\"window.open(this.href,'linkedinwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=500').focus();return false;\" class=\"icon-linkedin icon-share-child\"><i class=\"fa fa-linkedin\"></i><span class=\"hidden\">Share on Linkedin</span></a>     <a href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1334 onclick=\" window.open(this.href,'fbwindow','toolbar=\"no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=350').focus();return\" false;\" class=\"icon-facebook icon-share-child\"><i class=\"fa fa-facebook\"></i><span class=\"hidden\">Share on Facebook</span></a>     <a href=\"https://twitter.com/share?url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1334;text=Cancer Treatment-Legislation Text\" class=\"ani icon-twitter icon-share-child\" onclick=\"window.open(this.href,'twitterwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=300').focus();return false;\"><i class=\"fa fa-twitter\"></i><span class=\"hidden\">Share on Twitter</span></a>    </div>   </div>  </div> </div> <div class=\"aDoc\">  <a href=\"http://analyses.chbrp.com/document/view.php?id=1358\">Full Report:</a> 04/20/18  <div class=\"share\">   <a href=\"mailto:?Subject=Cancer Treatment - Full Report&amp;body=View the document here: http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1358. More at http%3A%2F%2Fchbrp.com%2Fcompleted_analyses%2Findex.php?house=AB%26billno=1860\" class=\"share-link\" onclick=\"genEmail();\"><i class=\"fa fa-envelope\"></i></a>   <div class=\"socialmedia\">    <a href=\"#share\" class=\"share-link stoggle\" onclick=\"return false;\"><i class=\"fa fa-share-alt\"></i></a>    <div class=\"s-links\">     <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1358&amp;title=amp;summary=\" onclick=\"window.open(this.href,'linkedinwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=500').focus();return false;\" class=\"icon-linkedin icon-share-child\"><i class=\"fa fa-linkedin\"></i><span class=\"hidden\">Share on Linkedin</span></a>     <a href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1358 onclick=\" window.open(this.href,'fbwindow','toolbar=\"no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=350').focus();return\" false;\" class=\"icon-facebook icon-share-child\"><i class=\"fa fa-facebook\"></i><span class=\"hidden\">Share on Facebook</span></a>     <a href=\"https://twitter.com/share?url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1358;text=Cancer Treatment-Full Report\" class=\"ani icon-twitter icon-share-child\" onclick=\"window.open(this.href,'twitterwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=300').focus();return false;\"><i class=\"fa fa-twitter\"></i><span class=\"hidden\">Share on Twitter</span></a>    </div>   </div>  </div> </div> <div class=\"aDoc\">  <a href=\"http://analyses.chbrp.com/document/view.php?id=1362\">Updated Analysis:</a> 06/20/18  <div class=\"share\">   <a href=\"mailto:?Subject=Cancer Treatment - Updated Analysis&amp;body=View the document here: http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1362. More at http%3A%2F%2Fchbrp.com%2Fcompleted_analyses%2Findex.php?house=AB%26billno=1860\" class=\"share-link\" onclick=\"genEmail();\"><i class=\"fa fa-envelope\"></i></a>   <div class=\"socialmedia\">    <a href=\"#share\" class=\"share-link stoggle\" onclick=\"return false;\"><i class=\"fa fa-share-alt\"></i></a>    <div class=\"s-links\">     <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1362&amp;title=amp;summary=\" onclick=\"window.open(this.href,'linkedinwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=500').focus();return false;\" class=\"icon-linkedin icon-share-child\"><i class=\"fa fa-linkedin\"></i><span class=\"hidden\">Share on Linkedin</span></a>     <a href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1362 onclick=\" window.open(this.href,'fbwindow','toolbar=\"no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=350').focus();return\" false;\" class=\"icon-facebook icon-share-child\"><i class=\"fa fa-facebook\"></i><span class=\"hidden\">Share on Facebook</span></a>     <a href=\"https://twitter.com/share?url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1362;text=Cancer Treatment-Updated Analysis\" class=\"ani icon-twitter icon-share-child\" onclick=\"window.open(this.href,'twitterwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=300').focus();return false;\"><i class=\"fa fa-twitter\"></i><span class=\"hidden\">Share on Twitter</span></a>    </div>   </div>  </div> </div> <div class=\"aDoc\">  <a href=\"http://analyses.chbrp.com/document/view.php?id=1359\">Key Findings:</a> 04/20/18  <div class=\"share\">   <a href=\"mailto:?Subject=Cancer Treatment - Key Findings&amp;body=View the document here: http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1359. More at http%3A%2F%2Fchbrp.com%2Fcompleted_analyses%2Findex.php?house=AB%26billno=1860\" class=\"share-link\" onclick=\"genEmail();\"><i class=\"fa fa-envelope\"></i></a>   <div class=\"socialmedia\">    <a href=\"#share\" class=\"share-link stoggle\" onclick=\"return false;\"><i class=\"fa fa-share-alt\"></i></a>    <div class=\"s-links\">     <a href=\"http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1359&amp;title=amp;summary=\" onclick=\"window.open(this.href,'linkedinwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=500').focus();return false;\" class=\"icon-linkedin icon-share-child\"><i class=\"fa fa-linkedin\"></i><span class=\"hidden\">Share on Linkedin</span></a>     <a href=\"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1359 onclick=\" window.open(this.href,'fbwindow','toolbar=\"no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=350').focus();return\" false;\" class=\"icon-facebook icon-share-child\"><i class=\"fa fa-facebook\"></i><span class=\"hidden\">Share on Facebook</span></a>     <a href=\"https://twitter.com/share?url=http%3A%2F%2Fanalyses.chbrp.com%2Fdocument%2Fview.php?id=1359;text=Cancer Treatment-Key Findings\" class=\"ani icon-twitter icon-share-child\" onclick=\"window.open(this.href,'twitterwindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=550,height=300').focus();return false;\"><i class=\"fa fa-twitter\"></i><span class=\"hidden\">Share on Twitter</span></a>    </div>   </div>  </div> </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>
