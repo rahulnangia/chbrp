@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}">
+
+    <title>Welcome to California Health Benefits Review Program</title>
+
+    <style type="text/css">
+      *{
+        font-size: 14px;
+      }
+      label{
+        padding: 0 7px 0 20px;
+        position: relative;
+      }
+      label.separator::before{
+        content: '';
+        height: 29px;
+        width: 2px;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        background: #ebebeb;
+      }
+      input{
+        padding: 18px 10px !important;
+      }
+      .customRadio{
+        display: none !important;
+      }
+      .customRadio:checked + label {
+        position: relative;
+        color: #103a5d;
+      }
+      .customRadio + label {
+        padding: 0 10px;
+        font-size: 14px;
+        font-family: "Ubuntu";
+        color: #898989;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: :0;
+      }
+      .customRadio:checked + label:after{
+        content: '';
+        position: absolute;
+        background: #103a5d;
+        bottom: -7px;
+        left: 0;
+        right: 0;
+        height: 2px;
+      }
+      .btn{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-left: 20px;
+      }
+      .aDoc{
+        position: relative;
+      }
+      .share{
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .share a{
+        width: 20px;
+        font-weight: 700;
+        color: #1B4888;
+        font-size: 14px;
+        opacity: .4;
+        margin-right: 8px;
+        display: table-cell;
+      }
+      #loading{
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Form -->
+    <form class="form-inline" name="form">
+      <label>House:</label>
+      <input type="radio" id="ab" name="house" value="ab" class="customRadio"><label for="ab">AB</label>
+      <input type="radio" id="sb" name="house" value="sb" class="customRadio"><label for="sb">SB</label>
+
+      <label class="separator" for="bill-no">Bill Number:</label>
+      <input type="number" class="form-control" id="bill-no" placeholder="Enter Bill Number">
+
+      <label class="separator" for="year">Year:</label>
+      <select class="custom-select" id="year">
+        <option selected value="">Select Year</option>
+      </select>
+
+      <label class="separator" for="author">Author:</label>
+      <input type="text" class="form-control" id="author" placeholder="Enter Author">
+
+      <label class="separator" for="keywords">Keywords:</label>
+      <input type="text" class="form-control" id="keywords" placeholder="Enter a Keyword">
+
+      <button type="submit" class="btn btn-light">Filter</button>
+    </form>
+
+    <br/>
+
+    <div id="loading">
+      <p><img src="http://i.stack.imgur.com/FhHRx.gif" /></p>
+    </div>
+    <!-- Table -->
+    <table class="table" id="table">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Analyzed Legislation</th>
+          <th scope="col">Year</th>
+          <th scope="col">Author</th>
+          <th scope="col">Topic/ Keywords</th>
+          <th scope="col">Relevance</th>
+          <th scope="col">Completed Analyses</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        $('#loading').show();
+        var year = (new Date()).getFullYear(),
+          select = document.getElementById("year"),
+          option = null,
+          prev_year = null;
+        for (var i = 0; i < 15; i++) {
+          option = document.createElement("option");
+          prev_year = parseInt(year, 10) - i;
+          option.value = prev_year;
+          option.innerHTML = prev_year;
+          select.appendChild(option);
+        }
+
+        //
+        //
+        $.ajax({
+          type: "POST",
+          url: "/search",
+          data: {
+            house: null,
+            billNo: null,
+            year: null,
+            author: null,
+            keywords: null
+          },
+          success: function(response) {
+            $('#loading').hide();
+            $.each(response.hits.hits, function(i, item) {
+              var $tr = $('<tr>').append(
+                $('<td>').text(i+1),
+                $('<td>').text(item._source.b_house + ' ' + item._source.b_number),
+                $('<td>').text(item._source.year),
+                $('<td>').text(item._source.author.join(", ")),
+                $('<td>').text(item._source.title),
+                $('<td>').text(item._score || 0 ),
+                $('<td>').html(item._source.reference)
+              ).appendTo('#table');
+            });
+          },
+          error: function(error) {
+            console.log(error)
+          }
+        })
+
+
+        //
+        //
+      };
+      $(document).ready(function() {
+        $("form").on("submit", function(e) {
+          $('#loading').show();
+          $("#table tr").has('td').remove();
+          e.preventDefault();
+          var house = $('#ab')[0].checked ? 'ab' : null;
+          if (!house) {
+            house = $('#sb')[0].checked ? 'sb' : null;
+          }
+          var billNo = $('#bill-no').val();
+          var year = Number($('#year').val()) || null;
+          var author = $('#author').val();
+          var keywords = $('#keywords').val();
+          $.ajax({
+            type: "POST",
+            url: "/search",
+            data: {
+              house: house,
+              billNo: billNo,
+              year: year,
+              author: author,
+              keywords: keywords
+            },
+            success: function(response) {
+              $('#loading').hide();
+              $.each(response.hits.hits, function(i, item) {
+                var $tr = $('<tr>').append(
+                  $('<td>').text(i+1),
+                  $('<td>').text(item._source.b_house + ' ' + item._source.b_number),
+                  $('<td>').text(item._source.year),
+                  $('<td>').text(item._source.author.join(", ")),
+                  $('<td>').text(item._source.title),
+                  $('<td>').text(item._score),
+                  $('<td>').html(item._source.reference)
+                ).appendTo('#table');
+              });
+            },
+            error: function(error) {
+              console.log(error)
+            }
+          })
+        })
+      })
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  </body>
+</html>
